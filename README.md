@@ -55,8 +55,8 @@ http://ngrok주소 : 8080으로 접속할 예정이라
 ```
  $ docker run --name myjenkins --privileged -p 8080:8080 jenkins/jenkins:lts-jdk17
 ```
-3. 젠킨스 파이프라인 만들기
-   데시보드에 접속한 후부터
+3. 젠킨스 파이프라인 만들기(젠킨스
+   데시보드에 접속한 후부터)
 
    gradle 오류가 날때가 있다고 하셔서 Gradel 8.6 버전으로 변경했다. 
 ![Untitled (6)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/5f88029b-e019-466a-962a-26908949b12f)
