@@ -7,9 +7,9 @@
 사용 툴: virtualbox, mobaxterm, docker(genkins 컨테이너 구동), genkins, ngrok(localhost인 젠킨스랑 연결)
 
 ### 과정 
-1. 젠킨스랑 ngrok 포트 연결
+1. 젠킨스랑 ngrok 포트 연결 (포트포워딩)
 2. 깃에 spring boot app 푸시 후 gradlew에 실행 권한 주기
-3. 깃 훅 연결
+3. 깃 훅 연결(ngrok 페이로드 url에 넣기)
 4. 깃에서코드 변경시 젠킨스에서 자동 빌드
 
 gitbash에서 깃 푸시는 진행했다고 가정한다. (master가 아닌 이름 main으로 변경까지)
@@ -34,6 +34,7 @@ http://ngrok주소 : 8080으로 접속할 예정이라
    만약 실행시 세션 만료 등으로 발생되는 문제가 나타날 경우
    - 해결책 : yml 파일 삭제
    **C:\Users\사용자이름\AppData\Local\ngrok - 해당 경로에서 ngrok.yml 파일 삭제**
+3. 앞에서 포트포워딩 해줬기 때문에 ngrok도 8080 포트가 맞다 
 4.   ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/bcea57c0-cd8a-44ba-bee7-d59158ccbf42)
 
 ### 2. 깃에 spring boot app 푸시 후 gradleW에 실행 권한 주기
