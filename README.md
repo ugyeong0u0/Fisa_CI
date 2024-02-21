@@ -3,7 +3,11 @@
 
 목차 : 1. 로컬에서 ci 2. aws를 이용한 무중단배포(ci)
 
+요약 
 
+가상머신위에 도커를 설치하고 그 위에 젠킨스 컨테이너를 띄운다. 젠킨스는 localhost로 실행되기 때문에 깃허브 레포 변화에 따른 build를 재생성하려면 깃허브가 로컬에 접근할 수 있는 경로가 필요하다
+그러기 위해 대제목 1번에서는 ngtok을 활용해 local에서 돌아가는 젠킨스에 깃허브가 접근할 수 있게 해준다.
+대제목 2인 aws에서는 애초 aws ubuntu위에 똑같이 도커 설치 후 젠킨스를 올리는데 aws 인스턴스는 내가 종료하지 않는 한 종료되지 않기 때문에 무중단으로 깃허브가 알림을 보낼 수 있다.  
 
 ---------
 
@@ -41,6 +45,10 @@ http://ngrok주소 : 8080으로 접속할 예정이라
 ```
 3. 젠킨스 파이프라인 만들기
    데시보드에 접속한 후부터
+
+   gradle 오류가 날때가 있다고 하셔서 Gradel 8.6 버전으로 변경했다. 
+![Untitled (6)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/5f88029b-e019-466a-962a-26908949b12f)
+
    1) + 새로운 item클릭
    2) item name 작성 후 pipeline클릭
    3) cofigure 창에 들어와서
@@ -156,6 +164,8 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 
  깃허브-> 푸시한 레포-> 레포 settings->Webhooks-> add Webhook 후 
  페이로드 url엔 ngrok 주소 작성 후 ssl enable 체크 후 완료하기
+
+ ⭐⭐⭐ Payload URL 끝에 /github-webhook/ 꼭 넣어야함!!
  ![Untitled (3)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/85c5487b-e0c6-45ab-817b-d244a5d4e34d)
 
 ### 5. 깃에서코드 변경시 젠킨스에서 자동 빌드 결과 사진 
@@ -183,12 +193,59 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 ![Untitled (1)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/65518945-389b-48ac-b788-87c1918704ee)
 
 ### 2. jenkins container 설치 활용 (설치시 port 80으로 함)
-지운곳엔 aws 인스턴스 ip 주소넣기 
+
+1. aws ubuntu랑 연결하기 
+지운곳엔 aws 인스턴스 ipv4 ip 주소넣기 
+aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴
+
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
 
+기본 로그인 : ubuntu 
+
+2. 젠킨스에서 stage 추가해서 build하기
+   대제목 1-3 코드랑 같음
+
+3. aws ec2 ubuntu에서 docker 설치
+
+   ```
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+sudo apt install -y docker.io
+docker --version
+   ```
+4. docker 로그인
+
+```
+sudo usermod -aG docker $USER
+exit()
+후 재접속 
+
+$ docker login -u [ID]
+```
+
+5. 젠킨스 설치
+
+```
+docker run --name myjenkins --privileged -p 80:8080 jenkins/jenkins:lts-jdk17
+
+``` 
+6. 웹사이트에서 젠킨스 접속
+
+http://ec2 dns ipv4번호:80
+이때 ex2dns ipv4 번호는 aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴 존재 
 
 
-### 
+
+### 3. 깃허브와 jenkins 연동
+http://ec2 dns ipv4번호:포트번호/github-webhook/
+⭐⭐⭐ Payload URL 끝에 /github-webhook/ 꼭 넣어야함!!
+   ![스크린샷 2024-02-21 185351](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/eab6bb21-a10b-48ec-aaff-3bcdbb6224c9)
+
+### 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 결과 
 
 ![캡처](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/b2f384a6-dc27-4191-9772-99ef607575d0)
 
