@@ -10,7 +10,8 @@
 그러기 위해 대제목 1번에서는 ngtok을 활용해 local에서 돌아가는 젠킨스에 깃허브가 접근할 수 있게 해준다.
 대제목 2인 aws에서는 애초 aws ubuntu위에 똑같이 도커 설치 후 젠킨스를 올리는데 aws 인스턴스는 내가 종료하지 않는 한 종료되지 않기 때문에 무중단으로 깃허브에서 코드가 새롭게 푸시되면 젠킨스가 눈치채고 build하고 새롭게 빌드 할 수 있다.  
 
-![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/b2854a80-ead0-48e3-aa95-f7bcfdffbbb5)
+![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/10da5f61-6f8c-482d-9034-cc2be45dc9cf)
+
 
 ![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/923030bb-bc72-4eec-abcf-e6dcafc71832)
 
