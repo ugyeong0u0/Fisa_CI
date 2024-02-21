@@ -1,4 +1,4 @@
-
+![Untitled (4)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/741abceb-2dfe-4853-a0d4-29a2043f8777)
 목표 : ci + aws를 이용한 무중단 배포
 
 목차 : 1. 로컬에서 ci 2. aws를 이용한 무중단배포(ci)
@@ -179,8 +179,10 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 및 build
 
 ### 1. aws 인스턴스 생성하기 
+![Uploading Untitled (4).png…]()
+ubuntu 22.04 이용 
 
-### 과정
+### 
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
 
 ![캡처](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/b2f384a6-dc27-4191-9772-99ef607575d0)
