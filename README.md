@@ -1,10 +1,15 @@
 # fisa240220_2
 목표 ci/ cd 학습
+
+## 1. ngrok를 이용해 ci 실습  
 사용 툴: mobaxterm, docker(genkins 컨테이너 구동), genkins, ngrok(localhost인 젠킨스랑 연결)
 
-# 환경셋팅
+### 과정 
+1. 젠킨스랑 ngrok 포트 연결
+2. 
 
-도커 설치 이후부터 
+### 환경셋팅
+
 
 1. genkins 이미지 다운로드 및 container 실행 
 
