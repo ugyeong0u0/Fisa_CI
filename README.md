@@ -180,7 +180,7 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 
 ### 1. aws 인스턴스 생성하기 
 ubuntu 22.04 이용 
-![Untitled (4)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c95a617a-8666-47ec-821c-80d8687e4d93)
+
 
 
 ### 
