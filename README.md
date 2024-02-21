@@ -12,6 +12,8 @@
 
 ---------
 
+
+
 ## 1. ngrok를 이용해 ci 실습  
 사용 툴: virtualbox, mobaxterm, docker(genkins 컨테이너 구동), genkins, ngrok(localhost인 젠킨스랑 연결)
 
@@ -175,13 +177,16 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 
 
 -------------
+
+
 ## 2. aws를 이용해 ci 실습  
 사용 툴: virtualbox, mobaxterm, docker(genkins 컨테이너 구동), genkins, aws 
 
-## aws 활용(ec2 linux)
+### aws 활용(ec2 linux)
 위에서 한것과 같은 과정인데 다른 점은 aws에서 받은 ubuntu를 사용했다. 
 그렇기 때문에 도커 설치 등 설치 해줄 것이 많았다. 
 위에 레포를 그대로 이용하기 때문에 이미 gradlew 권한은 이미 설정되어 있으므로 넘어간다.
+
 
 ### 과정
 1. aws 인스턴스 생성하기 
@@ -193,9 +198,10 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 + ubuntu 22.04 이용 
 ![Untitled (1)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/65518945-389b-48ac-b788-87c1918704ee)
 
+
 ### 2. jenkins container 설치 활용 (설치시 port 80으로 함)
 
-1. aws ubuntu랑 연결하기 
+1. aws ubuntu랑 연결하기
 지운곳엔 aws 인스턴스 ipv4 ip 주소넣기 
 aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴
 
@@ -206,7 +212,9 @@ deafault 로그인 : ubuntu
 2. 젠킨스에서 stage 추가해서 build하기
    대제목 1-3 코드랑 같음
 
+
 3. aws ec2 ubuntu에서 docker 설치
+
 
 ```
 sudo apt update
@@ -219,6 +227,7 @@ sudo apt install -y docker.io
 docker --version
 ```
 
+
 4. docker 로그인
 
 ```
@@ -228,12 +237,14 @@ exit()
 $ docker login -u [ID]
 ````
 
+
 5. 젠킨스 설치
 
 ```
 docker run --name myjenkins --privileged -p 80:8080 jenkins/jenkins:lts-jdk17
 
 ```
+
 
 6. 웹사이트에서 젠킨스 접속
 
@@ -248,7 +259,10 @@ http://ec2 dns ipv4번호:포트번호/github-webhook/
 ⭐⭐⭐ Payload URL 끝에 /github-webhook/ 꼭 넣어야함!!
    ![스크린샷 2024-02-21 185351](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/eab6bb21-a10b-48ec-aaff-3bcdbb6224c9)
 
+
+
 ### 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 결과
+
 아래 사진에서 지금 빌드를 누르면 빌드가 너무 오래 걸리다가 웹사이트연결이 중단되는데 이는 ec2 램 메모리가 가득 찼기 때문에 실제 디스크의 용량을 이용하여 부족한 메모리를 대체할 공간을 swap memory(스왑 공간)이라 하는데 이를 통해 해결할 수 있다.
 
 인스턴스 재부팅 후 https://repost.aws/ko/knowledge-center/ec2-memory-swap-file를 참고하여 명령어로 해결하면 된다. 
