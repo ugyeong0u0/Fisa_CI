@@ -34,3 +34,13 @@ ci의 방법
                 }
             }
             스테이지 추가해 준다. 
+
+
+## aws 활용(ec2 linux)
+1. spring boot app 실행
+2. jenkins container 설치 활용, 설치시 port 80
+3. 깃허브와 jenkins 연동
+4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 및 build
+
+### 과정
+
