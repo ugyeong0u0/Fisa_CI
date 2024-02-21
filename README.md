@@ -26,7 +26,8 @@ ci의 방법
 
 
 
-*** 결과
+***결과***
+
 ![Uploading image.png…]()
 
                 }
