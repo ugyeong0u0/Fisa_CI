@@ -23,6 +23,12 @@ ci의 방법
                             ./gradlew clean bootJar
                         '''
                     }
+
+
+
+*** 결과
+![Uploading image.png…]()
+
                 }
             }
             스테이지 추가해 준다. 
