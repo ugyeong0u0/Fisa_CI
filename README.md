@@ -28,7 +28,8 @@ ci의 방법
 
 ***결과***
 
-![Uploading image.png…]()
+![캡처](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/f9ce6d13-d1a0-4b8a-acba-91987942ec23)
+
 
                 }
             }
