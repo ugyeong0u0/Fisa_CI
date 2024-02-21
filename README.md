@@ -61,7 +61,7 @@ http://ngrok주소 : 8080으로 접속할 예정이라
    gradle 오류가 날때가 있다고 하셔서 Gradel 8.6 버전으로 변경했다. 
 ![Untitled (6)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/5f88029b-e019-466a-962a-26908949b12f)
 
-   1) \+아이콘 새로운 item클릭
+   1) \+ 새로운 item클릭
    2) item name 작성 후 pipeline클릭
    3) cofigure 창에 들어와서
       General에서 Github project 체크 후 아까 깃허브에 푸시한 https 주소를 넣는다.
