@@ -201,7 +201,7 @@ aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴
 
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
 
-기본 로그인 : ubuntu 
+deafault 로그인 : ubuntu 
 
 2. 젠킨스에서 stage 추가해서 build하기
    대제목 1-3 코드랑 같음
@@ -221,7 +221,8 @@ docker --version
 
 4. docker 로그인
 
-```sudo usermod -aG docker $USER
+```
+sudo usermod -aG docker $USER
 exit() 
 
 $ docker login -u [ID]
