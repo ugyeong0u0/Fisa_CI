@@ -51,4 +51,5 @@ ci의 방법
 ### 과정
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
 
+![Uploading image.png…]()
 
