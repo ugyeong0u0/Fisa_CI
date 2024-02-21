@@ -208,7 +208,7 @@ aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴
 
 3. aws ec2 ubuntu에서 docker 설치
 
-   ```
+```
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
@@ -217,21 +217,19 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update
 sudo apt install -y docker.io
 docker --version
-   ```
+```
+
 4. docker 로그인
 
-
-```
-sudo usermod -aG docker $USER
+```sudo usermod -aG docker $USER
 exit() 
 
 $ docker login -u [ID]
-
 ````
 
 5. 젠킨스 설치
-```
 
+```
 docker run --name myjenkins --privileged -p 80:8080 jenkins/jenkins:lts-jdk17
 
 ```
@@ -244,6 +242,7 @@ http://ec2 dns ipv4번호:80
 
 
 ### 3. 깃허브와 jenkins 연동
+
 http://ec2 dns ipv4번호:포트번호/github-webhook/
 ⭐⭐⭐ Payload URL 끝에 /github-webhook/ 꼭 넣어야함!!
    ![스크린샷 2024-02-21 185351](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/eab6bb21-a10b-48ec-aaff-3bcdbb6224c9)
