@@ -1,4 +1,4 @@
-![Untitled (4)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/741abceb-2dfe-4853-a0d4-29a2043f8777)
+
 목표 : ci + aws를 이용한 무중단 배포
 
 목차 : 1. 로컬에서 ci 2. aws를 이용한 무중단배포(ci)
