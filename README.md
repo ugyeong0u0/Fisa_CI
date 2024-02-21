@@ -9,8 +9,9 @@
 ### 과정 
 1. 젠킨스랑 ngrok 포트 연결 (포트포워딩)
 2. 깃에 spring boot app 푸시 후 gradlew에 실행 권한 주기
-3. 깃 훅 연결(ngrok 페이로드 url에 넣기)
-4. 깃에서코드 변경시 젠킨스에서 자동 빌드
+3. genkins sript에 build stage 추가하기
+4. 깃 훅 연결(ngrok 페이로드 url에 넣기)
+5. 결과 : 깃에서코드 변경시 젠킨스에서 자동 빌드
 
 gitbash에서 깃 푸시는 진행했다고 가정한다. (master가 아닌 이름 main으로 변경까지)
 
@@ -22,21 +23,41 @@ virtualbox 네트워크 설정에서 포트포워딩을 해준다.
 http://ngrok주소 : 8080으로 접속할 예정이라 
 ![image (2)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c817cc8f-90e4-415f-a2dd-8a8021b3467d)
 
-
-1. 도커에서 genkins 이미지 다운로드 및 container 실행
-```
- $ docker run --name myjenkins --privileged -p 8080:8080 jenkins/jenkins:lts-jdk17
-```
-2. ngrok 설치 윈도우에 받고 실행
+1. ngrok 설치 윈도우에 받고 실행
    https://ngrok.com/ 사이트에서
    ![image (4)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/81e6523d-d148-4ef2-9e8e-2295fdb24650)
     2번 3번 붙여넣기
    만약 실행시 세션 만료 등으로 발생되는 문제가 나타날 경우
    - 해결책 : yml 파일 삭제
    **C:\Users\사용자이름\AppData\Local\ngrok - 해당 경로에서 ngrok.yml 파일 삭제**
-3. 앞에서 포트포워딩 해줬기 때문에 ngrok도 8080 포트가 맞다 
-4.   ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/bcea57c0-cd8a-44ba-bee7-d59158ccbf42)
-
+  앞에서 포트포워딩 해줬기 때문에 ngrok도 8080 포트가 맞다
+2. 도커에서 genkins 이미지 다운로드 및 container 실행
+```
+ $ docker run --name myjenkins --privileged -p 8080:8080 jenkins/jenkins:lts-jdk17
+```
+3. 젠킨스 파이프라인 만들기
+   데시보드에 접속한 후부터
+   1) + 새로운 item클릭
+   2) item name 작성 후 pipeline클릭
+   3) cofigure 창에 들어와서
+      General에서 Github project 체크 후 아까 깃허브에 푸시한 https 주소를 넣는다.
+      build trigger에서 Github hook trigger for GITScm polling 체크
+   4) pipeline에서 오른쪽 보면 try sample Pipelne이라고 보이는 것을 드랍다운에서 Github + Maven을 클릭한다. 그러면 스크립트에 와다다 무언가 적히는데
+     ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/bcea57c0-cd8a-44ba-bee7-d59158ccbf42)
+   5) 하단 저장하기 위에 Pipeline Syntax라고 파란색 글자를 클릭한다. 그러면 새창이 나오는데 
+      왼쪽 메뉴 중 Snippet Generator(이르만 봐도 느낌이 살짝 온다.)
+      Steps아래 Sample Step에서 드랍다운 중 git : Git을 클릭한다.
+      그러면 Repository URL 글자가 나타나는데 박스에 아까 푸시한 레폰 http 주소를 넣어주면 된다.
+      branch 이름은 위에서 master에서 main으로 변경해줬기 때문에 main으로 수정한다.
+      Credentials는 Add를 눌러 깃ID 비밀번호로 로그인 해준다.
+      Credentials 글자 아래 Add 아래 두개의 체크 박스는 체크된 처음 상태로 둔다.
+      이제 Generate Pipeline Script 누르면
+      아래 사진처럼 나오는데 이부분 그대로 복사하기 아이콘 눌러서
+      ![스크린샷 2024-02-21 164756](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/6213a1a0-9a49-4fc4-bab8-edc47b946f56)
+      3)번 전에 페이지로 돌아와 그대로 복붙하되 Groovy 작성 형식은 아래처럼 작성하면 된다. stage('') log 확인하기 쉬운 이름으로 작성하면 된다. 
+       ![Untitled (2)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/6ff7f170-1a9b-47a5-97ba-2b2ededa1acf)
+      
+       
 ### 2. 깃에 spring boot app 푸시 후 gradleW에 실행 권한 주기
 이유:
     ⭐⭐⭐
@@ -103,9 +124,10 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 잊지말고 위에 코드처럼 다시 git push를 진행한다.
 
 
-# ci의 과정  
-ci의 방법
+### 3. genkins sript에 build stage 추가하기 
+
 젠킨스에서 파이프라인에 
+```
   stage('github clone') {
             steps {
                 git credentialsId: 'credentialsId', url: '깃주소'
@@ -119,24 +141,40 @@ ci의 방법
                             ./gradlew clean bootJar
                         '''
                     }
+                }
+            }
+          
 
 
+```
 
-**결과**
+ ### 4. 깃 훅 연결(ngrok 페이로드 url에 넣기)
+
+ 깃허브-> 푸시한 레포-> 레포 settings->Webhooks-> add Webhook 후 
+ 페이로드 url엔 ngrok 주소 작성 후 ssl enable 체크 후 완료하기
+ ![Untitled (3)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/85c5487b-e0c6-45ab-817b-d244a5d4e34d)
+
+### 5. 깃에서코드 변경시 젠킨스에서 자동 빌드 결과 사진 
 
 ![캡처](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/f9ce6d13-d1a0-4b8a-acba-91987942ec23)
 
 
-                }
-            }
-            스테이지 추가해 준다. 
-
+-------------
+## 2. aws를 이용해 ci 실습  
+사용 툴: virtualbox, mobaxterm, docker(genkins 컨테이너 구동), genkins, aws 
 
 ## aws 활용(ec2 linux)
-1. spring boot app 실행
-2. jenkins container 설치 활용, 설치시 port 80
+위에서 한것과 같은 과정인데 다른 점은 aws에서 받은 ubuntu를 사용했다. 
+그렇기 때문에 도커 설치 등 설치 해줄 것이 많았다. 
+위에 레포를 그대로 이용하기 때문에 이미 gradlew 권한은 이미 설정되어 있으므로 넘어간다.
+
+### 과정
+1. aws 인스턴스 생성하기 
+2. jenkins container 설치 활용 (설치시 port 80으로 함)
 3. 깃허브와 jenkins 연동
 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 및 build
+
+### 1. aws 인스턴스 생성하기 
 
 ### 과정
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
