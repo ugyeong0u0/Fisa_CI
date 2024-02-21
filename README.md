@@ -157,16 +157,16 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
                 git credentialsId: 'credentialsId', url: '깃주소'
             }
         }
-        stage('build'){
-                steps{
-                    dir(''){
-                        sh'''
-                            echo build start
-                            ./gradlew clean bootJar
-                        '''
-                    }
-                }
-            }
+  stage('build'){
+            steps{
+                dir(''){
+                    sh'''
+                       echo build start
+                       ./gradlew clean bootJar
+                       '''
+                 }
+              }
+         }
           
 
 
