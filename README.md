@@ -12,7 +12,7 @@
 
 ![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/b2854a80-ead0-48e3-aa95-f7bcfdffbbb5)
 
-![Uploading 제목 없음.png…]()
+![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/923030bb-bc72-4eec-abcf-e6dcafc71832)
 
 
 ---------
