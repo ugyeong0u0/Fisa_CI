@@ -179,8 +179,9 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 및 build
 
 ### 1. aws 인스턴스 생성하기 
-![Uploading Untitled (4).png…]()
 ubuntu 22.04 이용 
+![Untitled (4)](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c95a617a-8666-47ec-821c-80d8687e4d93)
+
 
 ### 
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
