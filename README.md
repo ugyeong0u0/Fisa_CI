@@ -210,7 +210,8 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 
 ### 2. jenkins container 설치 활용 (설치시 port 80으로 함)
 
-1. aws ubuntu랑 연결하기
+1. aws ubuntu랑 연결하기->mobaxterm ssh설정
+
 지운곳엔 aws 인스턴스 ipv4 ip 주소넣기 
 aws  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴
 
