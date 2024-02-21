@@ -1,4 +1,6 @@
 # fisa240220_2
+# ci의 과정 
+
 ci의 방법
 젠킨스에서 파이프라인에 
   stage('github clone') {
