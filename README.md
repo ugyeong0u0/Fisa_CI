@@ -11,7 +11,8 @@
 대제목 2인 aws에서는 애초 aws ubuntu위에 똑같이 도커 설치 후 젠킨스를 올리는데 aws 인스턴스는 내가 종료하지 않는 한 종료되지 않기 때문에 무중단으로 깃허브에서 코드가 새롭게 푸시되면 젠킨스가 눈치채고 build하고 새롭게 빌드 할 수 있다.  
 
 
-![image](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/0e8b3812-3b4f-413c-bfce-e4633778f938)
+![제목 없음](https://github.com/ugyeong0u0/Fisa_CI/assets/120684605/314c2df1-1d27-41cd-97cd-6e346905fb2d)
+
 
 
 
