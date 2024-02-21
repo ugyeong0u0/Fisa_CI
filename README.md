@@ -23,7 +23,7 @@
 
 
 
-## 1. ngrok를 이용해 ci 실습  
+## 1. ngrok을 이용한 ci 실습  
 사용 툴: virtualbox, mobaxterm, docker(genkins 컨테이너 구동), genkins, ngrok(localhost인 젠킨스랑 연결)
 
 ### 과정 
