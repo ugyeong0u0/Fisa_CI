@@ -213,11 +213,11 @@ Admin@1-15 MINGW64 /c/git/fisa_homework/step07_citest2 (main)
 1. aws ubuntu랑 연결하기->mobaxterm ssh설정
 
 지운곳엔 aws 인스턴스 ipv4 ip 주소넣기 
-(방법 aws사이트  Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴)
+(방법 : aws사이트 Ec2-> 인스턴스 하나 클릭 시 인스턴스 요약나옴)
 
 ![Untitled](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/c2ad4dac-fd58-4fcf-a013-b9c3a65c6980)
 
-deafault 로그인 : ubuntu 
+default 로그인 : ubuntu 
 
 2. 젠킨스에서 stage 추가해서 build하기
    대제목 1-3 코드랑 같음
