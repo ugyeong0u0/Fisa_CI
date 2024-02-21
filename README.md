@@ -219,20 +219,22 @@ docker --version
    ```
 4. docker 로그인
 
+
 ```
 sudo usermod -aG docker $USER
-exit()
-후 재접속 
+exit() 
 
 $ docker login -u [ID]
-```
+
+````
 
 5. 젠킨스 설치
-
 ```
+
 docker run --name myjenkins --privileged -p 80:8080 jenkins/jenkins:lts-jdk17
 
-``` 
+```
+
 6. 웹사이트에서 젠킨스 접속
 
 http://ec2 dns ipv4번호:80
@@ -245,8 +247,13 @@ http://ec2 dns ipv4번호:포트번호/github-webhook/
 ⭐⭐⭐ Payload URL 끝에 /github-webhook/ 꼭 넣어야함!!
    ![스크린샷 2024-02-21 185351](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/eab6bb21-a10b-48ec-aaff-3bcdbb6224c9)
 
-### 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 결과 
+### 4. 깃허브에 변경내용 push시 자동으로 webhook 기능으로 알림 정보로 ubuntu에 pull 적용 결과
+아래 사진에서 지금 빌드를 누르면 빌드가 너무 오래 걸리다가 웹사이트연결이 중단되는데 이는 ec2 램 메모리가 가득 찼기 때문에 실제 디스크의 용량을 이용하여 부족한 메모리를 대체할 공간을 swap memory(스왑 공간)이라 하는데 이를 통해 해결할 수 있다.
+
+인스턴스 재부팅 후 https://repost.aws/ko/knowledge-center/ec2-memory-swap-file를 참고하여 명령어로 해결하면 된다. 
 
 ![캡처](https://github.com/ugyeong0u0/fisa240220_2/assets/120684605/b2f384a6-dc27-4191-9772-99ef607575d0)
+
+
 
 
