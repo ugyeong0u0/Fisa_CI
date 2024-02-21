@@ -1,4 +1,7 @@
 # fisa240220_2
+목표 ci/ cd 학습
+사용 툴: genkins, ngrok(localhost인 젠킨스랑 연결)
+
 # ci의 과정 
 
 ci의 방법
