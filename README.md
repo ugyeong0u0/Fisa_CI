@@ -242,9 +242,9 @@ docker --version
 
 ```
 sudo usermod -aG docker $USER
-exit() 
+exit
 
-$ docker login -u [ID]
+docker login -u [ID]
 ````
 
 
